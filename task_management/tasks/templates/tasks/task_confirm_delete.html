@@ -1,0 +1,12 @@
+<!-- templates/tasks/task_confirm_delete.html -->
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h2>Удалить задание?</h2>
+<p>Вы уверены, что хотите удалить задание "{{ object.title }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a href="{% url 'task-list' %}" class="btn">Отмена</a>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="registration-container">
+    <h2>Регистрация</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-register">Зарегистрироваться</button>
+    </form>
+</div>
+{% endblock %}

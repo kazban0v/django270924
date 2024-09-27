@@ -1,0 +1,12 @@
+<!-- task_management/templates/registration/login.html -->
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+<h2>Вход в систему</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Войти</button>
+</form>
+<p>Нет учетной записи? <a href="{% url 'register' %}">Зарегистрируйтесь</a></p>
+{% endblock %}

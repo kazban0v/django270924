@@ -1,0 +1,22 @@
+<!-- templates/tasks/task_list.html -->
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h2>Все задания</h2>
+<div class="button-container">
+    <a href="?assigned_to_me=1" class="btn btn-assigned">Назначенные мне</a>
+    <a href="?group=Project Manager" class="btn btn-project">Задачи Project Manager</a>
+    <a href="{% url 'task-create' %}" class="btn">Создать новое задание</a>
+</div>
+<ul>
+    {% for task in object_list %}
+    <li>
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.description }}</p>
+        <p><strong>Назначено:</strong> {{ task.assigned_to }}</p>
+        <a href="{% url 'task-update' task.pk %}" class="btn btn-edit">Редактировать</a>
+        <a href="{% url 'task-delete' task.pk %}" class="btn btn-danger">Удалить</a>  
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
